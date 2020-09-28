@@ -13,11 +13,18 @@ class MinHeap
     @store = []
   end
 
+  # helper method to find parent
+  def find_parent(index)
+    parent_index = (index - 1) / 2
+    return parent_index
+  end
+
   # This method adds a HeapNode instance to the heap
   # Time Complexity: ?
   # Space Complexity: ?
   def add(key, value = key)
-    raise NotImplementedError, "Method not implemented yet..."
+    @store << HeapNode.new(key, value)
+    heap_up(@store.length-1)
   end
 
   # This method removes and returns an element from the heap
@@ -58,7 +65,15 @@ class MinHeap
   # Time complexity: ?
   # Space complexity: ?
   def heap_up(index)
+    return if index == 0
     
+    parent = find_parent(index)
+    if @store[parent].key > @store[index].key
+      temp = @store[parent]
+      @store[parent] = @store[index]
+      @store[index] = temp
+      heap_up(parent)
+    end
   end
 
   # This helper method takes an index and 
