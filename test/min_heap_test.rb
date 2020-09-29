@@ -61,19 +61,19 @@ describe "Heap" do
    heap.add(57, "Cake")
 
    # Act
-   removed = heap.remove
+   removed = heap.remove.value
 
    # Assert
    expect(removed).must_equal "Donuts"
 
    # Another Act
-   removed = heap.remove
+   removed = heap.remove.value
 
    # Another assert
    expect(removed).must_equal "Pizza"
 
   # Another Act
-  removed = heap.remove
+  removed = heap.remove.value
 
   # Another assert
   expect(removed).must_equal "Pasta"
